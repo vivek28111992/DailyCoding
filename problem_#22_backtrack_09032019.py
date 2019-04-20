@@ -30,5 +30,6 @@ def wordBreakUtil(str, n, result):
                 return
             wordBreakUtil(str[i:], n-i, result+prefix+' ')
 
+
 word = 'iloveicecreamandmango'
 wordBreak(word)
