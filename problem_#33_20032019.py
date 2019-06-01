@@ -20,6 +20,8 @@ For example, given the sequence [2, 1, 5, 7, 2, 0, 5], your algorithm should pri
 
 https://leetcode.com/problems/find-median-from-data-stream/discuss/74062/Short-simple-JavaC%2B%2BPython-O(log-n)-%2B-O(1)
 https://www.youtube.com/watch?v=VmogG01IjYc
+
+https://www.geeksforgeeks.org/heap-queue-or-heapq-in-python/
 """
 
 from heapq import *
