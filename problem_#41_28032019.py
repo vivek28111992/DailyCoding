@@ -31,4 +31,5 @@ def get_itinerary(flights, current_itinerary):
         current_itinerary.pop()
     return None
 
-print(get_itinerary([('SFO', 'HKO'), ('YYZ', 'SFO'), ('YUL', 'YYZ'), ('HKO', 'ORD')], ['YUL']))
+if __name__ == '__main__':
+    print(get_itinerary([('SFO', 'HKO'), ('YYZ', 'SFO'), ('YUL', 'YYZ'), ('HKO', 'ORD')], ['YUL']))
