@@ -75,7 +75,7 @@ def printInorder(node):
     printInorder(node.left)
 
     # then print the data of node
-    print(node.data)
+    print(node.data, end=' ')
 
     # now recur on right child
     printInorder(node.right)
@@ -89,4 +89,4 @@ buildTree.preIndex = 0
 root = buildTree(inOrder, preOrder, 0, len(inOrder) - 1)
 
 # Let us test the build tree by priting Inorder traversal
-print("Inorder traversal of the constructed tree is", printInorder(root))
+printInorder(root)
