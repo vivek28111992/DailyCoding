@@ -15,31 +15,64 @@ You can assume all the integers in the array are unique.
 https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
 """
 
-def index_of_number(rotated_array, n):
+def binary_search(arr, start, end, key):
+
+    if end < start:
+        return -1
+
+    mid = int((start+end)/2)
+
+    if arr[mid] == key:
+        return mid
+
+    if key < arr[mid]:
+        end = mid-1
+        return binary_search(arr, start, end, key)
+    else:
+        start = mid+1
+        return binary_search(arr, start, end, key)
+
+
+def findPivot(arr, low, high):
+    # base cases
+    if high < low:
+        return -1
+
+    if high == low:
+        return low
+
+    mid = int((low + high) / 2)
+
+    if arr[mid] > arr[mid+1]:
+        return (mid+1)
+
+    if arr[low] <= arr[mid]:
+        return findPivot(arr, mid+1, high)
+    return findPivot(arr, low, mid-1)
+
+
+
+def index_of_number(rotated_array, key):
     l = len(rotated_array)
 
     if l < 1:
         return 'Invalid Array'
-    elif l == 1:
-        if rotated_array[0] == n:
-            return 0
-        else:
-            return None
     else:
 
-        pivot = l // 2
+        pivot = findPivot(rotated_array, 0, l)
+        print('pivot ', pivot)
 
-        if n < rotated_array[0]:
-            for i in range(pivot, l):
-                if rotated_array[i] == n:
-                    return i
-            return None
-        else:
-            for i in range(pivot):
-                if rotated_array[i] == n:
-                    return i
-            return None
+        # If we didn't find a pivot, then array is not at all rotated
+        if pivot == -1:
+            return binary_search(rotated_array, 0, l-1, key)
+
+        if rotated_array[pivot] == key:
+            return pivot
+
+        if rotated_array[pivot] < key and key < rotated_array[l-1]:
+            return binary_search(rotated_array, pivot+1, l-1, key)
+        return binary_search(rotated_array, 0, pivot-1, key)
 
 if __name__ == '__main__':
-    res = index_of_number([13, 18, 25, 2, 8, 10], 10)
+    res = index_of_number([73, 85, 94, 21, 34, 47, 54, 66], 85)
     print(res)
