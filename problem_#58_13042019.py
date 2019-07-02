@@ -12,6 +12,7 @@ For example, given the array [13, 18, 25, 2, 8, 10] and the element 8, return 4 
 You can assume all the integers in the array are unique.
 
 
+https://www.youtube.com/watch?v=6pSzsJH56BA
 https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
 """
 
