@@ -1,5 +1,9 @@
 """
 N-Queen Problem
+
+
+https://algorithms.tutorialhorizon.com/backtracking-n-queens-problem/
+https://www.youtube.com/watch?v=xouin83ebxE
 """
 
 
