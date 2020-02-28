@@ -22,7 +22,7 @@ def fillAttendance(file):
     # print(sheet.ncols)
 
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-    holidaysTaken = [19]
+    holidaysTaken = []
 
     for i in range(sheet.nrows):
         firstCellValue = sheet.cell_value(i, 0)
@@ -35,6 +35,11 @@ def fillAttendance(file):
                 sheetToEdit.write(i, 1, 'Mahindra Logistics')
             elif i == 2:
                 sheetToEdit.write(i, 1, 'Goregaon West (Mumbai)')
+            elif i == 3:
+                now = datetime.datetime.now()
+                last_month = now.month - 1 if now.month > 1 else 12
+                last_year = now.year - 1 if last_month == 12 else now.year
+                sheetToEdit.write(i, 1, str(last_month) + '/' + str(last_year))
             elif firstCellValue in days:
                 for j in range(1, sheet.ncols, 3):
                     cellValue = sheet.cell_value(i, j)
@@ -45,7 +50,7 @@ def fillAttendance(file):
                         randomOutTime = str(datetime.datetime.now().replace(hour=randint(19, 20), minute=randint(0, 59)).time())[0:5]
                         sheetToEdit.write(i, j+2, randomOutTime + ' pm')
                     elif cellValue in holidaysTaken:
-                        sheetToEdit.write(i, j+1, 'Holiday')
+                        sheetToEdit.write(i, j+1, 'Leave')
             elif i == 17:
                 sheetToEdit.write(i-1, 0, 'Rahul Divekar')
                 sheetToEdit.write(i-1, 12, 'Vivek Pawar')
