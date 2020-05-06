@@ -6,9 +6,9 @@ from xlutils.copy import copy
 
 
 def fillAttendance(file):
-
-    filePath = '/'.join(os.getcwd().split('/')[:3]) + '/Downloads'
-    wb = open_workbook(filePath + '/' + file)
+    print('C:\Downloads' + '\\' + file)
+    # filePath = '/'.join(os.getcwd().split('/')[:3]) + '/Downloads'
+    wb = open_workbook('C:\\Users\\ACER\\Downloads' + '\\' + file)
     wbNew = copy(wb)
 
     sheetToEdit = wbNew.get_sheet(0)
@@ -22,7 +22,7 @@ def fillAttendance(file):
     # print(sheet.ncols)
 
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-    holidaysTaken = []
+    holidaysTaken = [19, 25]
 
     for i in range(sheet.nrows):
         firstCellValue = sheet.cell_value(i, 0)
